@@ -1,11 +1,8 @@
 import type { NextPage } from 'next';
-
+import { Layout } from '../component/layout';
 
 const Home: NextPage = () => {
-  return (
-    <div>Home</div>
-  );
+  return <Layout>Home</Layout>;
 };
-
 
 export default Home;

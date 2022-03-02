@@ -7,7 +7,7 @@ export const breakpoints = {
   laptopL: '90rem', //1440px
   desktop: '160rem', //2560px
 };
-export const devices = {
+export const DEVICES = {
   mobileS: `(min-width: ${breakpoints.mobileS})`,
   mobileM: `(min-width: ${breakpoints.mobileM})`,
   mobileL: `(min-width: ${breakpoints.mobileL})`,
