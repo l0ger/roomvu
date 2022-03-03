@@ -26,9 +26,9 @@ yarn start
 
 ###  3-Run the project using docker image:
 ```bash
-docker build Roomvu -t Roomvu-frontend
+docker build roomvu -t roomvu-frontend
 
-docker run -p 5000:3000 Roomvu-frontend
+docker run -p 5000:3000 roomvu-frontend
 ```
 
 Open `http:localhost:5000` in your browser.
@@ -38,7 +38,5 @@ Open `http:localhost:5000` in your browser.
 `yarn test`
 Launches the test runner in the interactive watch mode.
 It's possible to modify jest configuration from dedicated jest configuration file `jest.config.js`.
-You can find and put mocks into the `__mock__` directory. 
-Also you can find test utils here : `utils/testUtil.tsx` 
 You have to put your test file into the __test__ directory beside your component.
 You have to use this pattern for test file name: [filename].test.[ts|tsx]
