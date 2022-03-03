@@ -7,31 +7,37 @@ const StyledTypography = styled.div<{
   align: string | undefined;
   minWidth: string | undefined;
   width?: string;
+  padding?: string;
 }>`
   text-align: ${props => props.align || 'left'};
   display: inline;
   width: ${props => props.width || 'auto'};
   word-wrap: break-word;
   min-width: ${props => props.minWidth || 'auto'};
+  padding: ${props => props.padding || 'auto'};
   .typographyVariantH1 {
     font-size: ${props => props.theme.fontSizes.mobile.h1};
-    font-weight: 500;
+    font-weight: bold;
+    padding: 0.8em 0;
   }
   .typographyVariantH2 {
     font-size: ${props => props.theme.fontSizes.mobile.h2};
-    font-weight: 500;
+    font-weight: bold;
+    padding: 0.7em 0;
   }
   .typographyVariantH3 {
     font-size: ${props => props.theme.fontSizes.mobile.h3};
-    font-weight: 500;
+    font-weight: bold;
+    padding: 0.7em 0;
   }
   .typographyVariantH4 {
     font-size: ${props => props.theme.fontSizes.mobile.h4};
-    font-weight: 500;
+    font-weight: bold;
+    padding: 0.5em 0;
   }
   .typographyVariantH5 {
     font-size: ${props => props.theme.fontSizes.mobile.h5};
-    font-weight: 500;
+    font-weight: bold;
   }
   .typographyVariantH6 {
     font-size: ${props => props.theme.fontSizes.mobile.h6};
@@ -67,6 +73,9 @@ const StyledTypography = styled.div<{
   // colors
   .success {
     color: ${props => props.theme.colors.typoSuccess};
+  }
+  .theme {
+    color: ${props => props.theme.colors.theme};
   }
   .error {
     color: ${props => props.theme.colors.typoError};
@@ -105,6 +114,7 @@ enum ColorClassMapping {
   error = 'error',
   primary = 'primary',
   secondary = 'secondary',
+  theme = 'theme',
 }
 enum AlignClassMapping {
   right = 'alignRight',
@@ -119,6 +129,7 @@ interface TypographyProps {
   maxWidth?: string;
   minWidth?: string;
   customClass?: string;
+  padding?: string;
 }
 
 const Typography: FC<TypographyProps> = ({
@@ -129,6 +140,7 @@ const Typography: FC<TypographyProps> = ({
   children,
   customClass,
   align,
+  padding,
   ...rest
 }) => {
   const Component = () =>
@@ -143,7 +155,12 @@ const Typography: FC<TypographyProps> = ({
       children,
     );
   return (
-    <StyledTypography align={align} width={width} minWidth={minWidth}>
+    <StyledTypography
+      align={align}
+      width={width}
+      minWidth={minWidth}
+      padding={padding}
+    >
       <Component />
     </StyledTypography>
   );
