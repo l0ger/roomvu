@@ -8,7 +8,6 @@ const StyledContainer = styled.article`
   display: flex;
   flex-direction: column;
   margin-bottom: 1.2em;
-
   p {
     padding: 0.3em 0;
   }
@@ -23,16 +22,20 @@ const Post: FC<PostProps> = ({ post }) => {
     title.length > 45 ? title.substring(0, 45) + '....' : title;
   return (
     <StyledContainer>
-      <Typography color={'theme'} variant={'h4'}>
-        {getDisplayTitle(post.title)}
-      </Typography>
+      <a href={`/post/${post.id}`}>
+        <Typography color={'theme'} variant={'h4'}>
+          {getDisplayTitle(post.title)}
+        </Typography>
+      </a>
       <header>
         <Typography
           color={'secondary'}
           variant={'body2'}
         >{`${getTodayShortStr()}  • ☕️ 5 min read`}</Typography>
       </header>
-      <Typography variant={'body1'}>{post.body}</Typography>
+      <Typography variant={'body1'} color={'primary'}>
+        {post.body}
+      </Typography>
     </StyledContainer>
   );
 };

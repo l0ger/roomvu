@@ -1,6 +1,32 @@
 import { DefaultTheme } from 'styled-components';
 import { Theme } from '../types';
 
+const fontSizes = {
+  mobile: {
+    h1: '6rem',
+    h2: '3.75rem',
+    h3: '3rem',
+    h4: '2.125rem',
+    h5: '1.5rem',
+    h6: '1.4rem',
+    subheading1: '1rem',
+    subheading2: '0.875rem',
+    body1: '1.3rem',
+    body2: '1rem',
+  },
+  tablet: {
+    h1: '6rem',
+    h2: '3.75rem',
+    h3: '3rem',
+    h4: '2.125rem',
+    h5: '1.5rem',
+    h6: '1.25rem',
+    subheading1: '0.9rem',
+    subheading2: '0.875rem',
+    body1: '1.1rem',
+    body2: '0.875rem',
+  },
+};
 const lightTheme: DefaultTheme = {
   colors: {
     theme: '#d23669',
@@ -19,39 +45,14 @@ const lightTheme: DefaultTheme = {
     gray6: '#A6ACAF',
     darkgray: '#585858',
   },
-  fontSizes: {
-    mobile: {
-      h1: '6rem',
-      h2: '3.75rem',
-      h3: '3rem',
-      h4: '2.125rem',
-      h5: '1.5rem',
-      h6: '1.4rem',
-      subheading1: '1rem',
-      subheading2: '0.875rem',
-      body1: '1.3rem',
-      body2: '1rem',
-    },
-    tablet: {
-      h1: '6rem',
-      h2: '3.75rem',
-      h3: '3rem',
-      h4: '2.125rem',
-      h5: '1.5rem',
-      h6: '1.25rem',
-      subheading1: '1rem',
-      subheading2: '0.875rem',
-      body1: '1rem',
-      body2: '0.875rem',
-    },
-  },
+  fontSizes,
 };
 
 const darkTheme: DefaultTheme = {
   colors: {
     theme: '#FFA7C4',
     bgPrimary: '#282C35',
-    bgOverlay: '#FFFFFF',
+    bgOverlay: '#282C35',
     activeBorderColor: '#FFCADB',
     borderFocus: '#5DADE2',
     typoSuccess: '#1D8348',
@@ -66,32 +67,7 @@ const darkTheme: DefaultTheme = {
     gray6: '#A6ACAF',
     darkgray: '#585858',
   },
-  fontSizes: {
-    mobile: {
-      h1: '6rem',
-      h2: '3.75rem',
-      h3: '3rem',
-      h4: '2.125rem',
-      h5: '1.5rem',
-      h6: '1.4rem',
-      subheading1: '1rem',
-      subheading2: '0.875rem',
-      body1: '1.3rem',
-      body2: '1rem',
-    },
-    tablet: {
-      h1: '6rem',
-      h2: '3.75rem',
-      h3: '3rem',
-      h4: '2.125rem',
-      h5: '1.5rem',
-      h6: '1.25rem',
-      subheading1: '1rem',
-      subheading2: '0.875rem',
-      body1: '1rem',
-      body2: '0.875rem',
-    },
-  },
+  fontSizes,
 };
 
 const theme: Record<Theme, DefaultTheme> = {

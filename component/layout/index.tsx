@@ -1,10 +1,13 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { DEVICES, GlobalStyle } from '../../styles';
-import { useSelector } from 'react-redux';
-import { themeSelector } from '../../redux/site.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setThemeAction, themeSelector } from '../../redux/site.slice';
 import theme from '../../styles/theme';
 import Typography from '../typography';
+import Toggle from '../toggle';
+import { ThemeManager } from '../../utils/themeManager';
+import { Theme } from '../../types';
 
 const StyledContainer = styled.div`
   background-color: ${props => props.theme.colors.bgPrimary};
@@ -25,7 +28,7 @@ const StyledMain = styled.main`
   display: flex;
   flex-grow: 1;
   box-sizing: border-box;
-  padding: 0 3%;
+  padding: 0 1em;
 
   .mainCol {
     width: 100vw;
@@ -59,7 +62,7 @@ const StyledHeader = styled.header`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 5% 3%;
+  padding: 5% 1em;
   background-color: ${props => props.theme.colors.bgOverlay};
   margin: 0;
   z-index: 10;
@@ -76,6 +79,12 @@ const StyledLink = styled.div`
 
 const Layout: FC = ({ children }) => {
   const themeName = useSelector(themeSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const theme = ThemeManager.getTheme();
+    dispatch(setThemeAction({ theme: theme as Theme }));
+  }, [dispatch]);
 
   return (
     <>
@@ -90,6 +99,7 @@ const Layout: FC = ({ children }) => {
                 </Typography>
               </a>
             </StyledLink>
+            <Toggle />
           </StyledHeader>
           <StyledMain>
             <div className={'leftCol'} />

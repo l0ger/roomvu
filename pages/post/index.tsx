@@ -1,16 +1,18 @@
 import type { NextPage, GetServerSideProps } from 'next';
-import Layout from '../component/layout';
+import Layout from '../../component/layout';
 import { QueryClient, dehydrate } from 'react-query';
-import { PostService } from '../services/postService';
-import { Post as PostType } from '../types';
-import { usePosts } from '../hooks/postHook';
+import { PostService } from '../../services/postService';
+import { Post as PostType } from '../../types';
+import { usePosts } from '../../hooks/postHook';
 import { Fragment } from 'react';
-import Post from '../component/post';
+import Post from '../../component/post';
+import Avatar from '../../component/avatar';
 
-const Home: NextPage = () => {
+const PostPage: NextPage = () => {
   const { data: posts, error, isLoading } = usePosts();
   return (
     <Layout>
+      <Avatar />
       {!error &&
         !isLoading &&
         posts &&
@@ -22,18 +24,15 @@ const Home: NextPage = () => {
     </Layout>
   );
 };
-export const getServerSideProps: GetServerSideProps = async function (context) {
+export const getServerSideProps: GetServerSideProps = async function () {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery<PostType[]>(
-    ['posts', context.query?.q || ''],
-    () => {
-      return PostService.posts();
-    },
-  );
+  await queryClient.prefetchQuery<PostType[]>(['posts'], () => {
+    return PostService.posts();
+  });
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
   };
 };
-export default Home;
+export default PostPage;

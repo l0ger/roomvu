@@ -14,7 +14,7 @@ export const usePosts = () => {
   );
 };
 
-export const usePost = (postId: number) => {
+export const usePost = (postId: string) => {
   return useQuery<Post>(
     ['post', postId],
     () => {

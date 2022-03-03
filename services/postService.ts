@@ -13,7 +13,7 @@ export class PostService {
     }
     return serverResponse;
   }
-  static async post(postId: number): Promise<Post> {
+  static async post(postId: string): Promise<Post> {
     const result = await httpClient.get(`${POST_URL}/${postId}`);
     const serverResponse = result.data;
     if (!serverResponse) {
